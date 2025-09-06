@@ -9,6 +9,7 @@ import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
 import "@mantine/notifications/styles.css";
 import "@mantine/nprogress/styles.css";
+import { Analytics } from "@vercel/analytics/next";
 import { AppProvider } from "./providers";
 
 export const metadata = {
@@ -53,7 +54,7 @@ export default function RootLayout({
             <Notifications position="top-right" autoClose={7000} />
             <ModalsProvider>
               <AppProvider>{children}</AppProvider>
-              {/* <Analytics /> */}
+              <Analytics />
             </ModalsProvider>
           </MantineProvider>
         </DirectionProvider>

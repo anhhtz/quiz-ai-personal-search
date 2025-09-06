@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "next dev --turbopack --port 4004",
     "start": "next start",
-    "build": "pnpm run partytown && next build",
+    "build": "next build",
     "lint": "next lint",
     "lint:fix": "next lint --fix --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write .",

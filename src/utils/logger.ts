@@ -1,4 +1,3 @@
-import { SeqTransport } from '@datalust/winston-seq';
 import chalk from 'chalk';
 import dayjs from 'dayjs';
 import { createLogger, format, transports } from 'winston';
@@ -106,30 +105,7 @@ const colorizedFormatter = format.combine(
 export const logger = createLogger({
     defaultMeta: systemMeta,
     transports: [
-        new transports.DailyRotateFile({
-            level: 'debug',
-            filename: `logs/debug_%DATE%.log`,
-            datePattern: 'YYYY-MM-DD-HH',
-            zippedArchive: true,
-            format: jsonFormatter,
-            maxSize: '20m',
-            maxFiles: '14d'
-        }),
-        // Error log file
-        new transports.File({
-            level: 'error',
-            filename: `logs/error_${dayjs().format('YYYY-MM-DD-HH')}.log`,
-            format: jsonFormatter,
-        }),
-        //Logflare
-        // new LogflareTransport({
-        //     apiKey: process.env.LOGFLARE_API_KEY!,
-        //     source: process.env.LOGFLARE_SOURCE_ID!,
-        //     level: 'debug',
-        //     format: colorizedFormatter || jsonFormatter,
-        //     colorize: false,
-        //     maxSize: '20m',
-        // }),
+
     ],
 });
 
@@ -140,6 +116,28 @@ if (process.env.NODE_ENV !== 'production') {
             level: 'verbose',
         }),
     );
+
+    // Error log file
+    logger.add(
+        new transports.File({
+            level: 'error',
+            filename: `logs/error_${dayjs().format('YYYY-MM-DD-HH')}.log`,
+            format: jsonFormatter,
+        }),
+    )
+    // Add daily file rotation transport for debug level
+    logger.add(
+        new transports.DailyRotateFile({
+            level: 'debug',
+            filename: `logs/debug_%DATE%.log`,
+            datePattern: 'YYYY-MM-DD-HH',
+            zippedArchive: true,
+            format: jsonFormatter,
+            maxSize: '20m',
+            maxFiles: '14d'
+        }),
+
+    )
 
     // logger.add(
     //     new SeqTransport({

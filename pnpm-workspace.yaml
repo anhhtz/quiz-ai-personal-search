@@ -1,0 +1,10 @@
+ignoredBuiltDependencies:
+  - '@sentry/cli'
+
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - bcrypt
+  - prisma
+  - protobufjs
+  - sharp

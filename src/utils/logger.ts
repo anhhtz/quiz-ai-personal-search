@@ -141,51 +141,29 @@ if (process.env.NODE_ENV !== 'production') {
         }),
     );
 
-    logger.add(
-        new SeqTransport({
-            serverUrl: process.env.SEQ_URL!,
-            onError: (e) => { console.error('Seq transport error:', e); },
-            apiKey: process.env.SEQ_API_KEY!,
-            handleExceptions: true,
-            handleRejections: true,
-        }),
-    )
+    // logger.add(
+    //     new SeqTransport({
+    //         serverUrl: process.env.SEQ_URL!,
+    //         onError: (e) => { console.error('Seq transport error:', e); },
+    //         apiKey: process.env.SEQ_API_KEY!,
+    //         handleExceptions: true,
+    //         handleRejections: true,
+    //     }),
+    // )
 }
 
 // Add Seq transport for production
 if (process.env.NODE_ENV === 'production') {
-    logger.add(
-        new SeqTransport({
-            serverUrl: process.env.SEQ_URL!,
-            onError: (e) => { console.error('Seq transport error:', e); },
-            apiKey: process.env.SEQ_API_KEY!,
-            handleExceptions: true,
-            handleRejections: true,
-        }),
-        //     //Logflare
-        //     // new LogflareTransport({
-        //     // 	apiKey: process.env.LOGFLARE_API_KEY!,
-        //     // 	source: process.env.LOGFLARE_SOURCE_ID!,
-        //     // 	level: 'debug',
-        //     // 	format: logFormatter,
-        //     // 	colorize: false,
-        //     // 	maxSize: '20m',
-        //     // }),
-        //     //ElasticSearch
-        //     // new ElasticsearchTransport({
-        //     //     level: 'info',
-        //     //     indexPrefix: process.env.NODE_ENV === 'production' ? 'quiz.ai-next' : 'quiz.ai-next-dev',
-        //     //     indexSuffixPattern: 'YYYY-MM',
-        //     //     clientOpts: {
-        //     //         node: process.env.ELASTICSEARCH_URL!,
-        //     //         retryLimit: 5,
-        //     //         auth: {
-        //     //             username: process.env.ELASTICSEARCH_USERNAME!,
-        //     //             password: process.env.ELASTICSEARCH_PASSWORD!,
-        //     //         },
-        //     //     },
-        //     // }),
-    );
+    // logger.add(
+    //     new SeqTransport({
+    //         serverUrl: process.env.SEQ_URL!,
+    //         onError: (e) => { console.error('Seq transport error:', e); },
+    //         apiKey: process.env.SEQ_API_KEY!,
+    //         handleExceptions: true,
+    //         handleRejections: true,
+    //     }),
+
+    // );
 }
 
 // Fluent Logger Interface

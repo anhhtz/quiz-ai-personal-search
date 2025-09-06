@@ -23,7 +23,7 @@ export const searchKns = async (query: string) => {
 
     if (cached) {
         console.log("cache hit");
-        return JSON.parse(cached);
+        return (cached);
     }
     else {
         console.log("cache miss => fetching from algolia");
